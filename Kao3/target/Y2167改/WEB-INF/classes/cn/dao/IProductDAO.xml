@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:接口绝对路径-->
+<mapper namespace="cn.dao.IProductDAO">
+   <select id="getAllproduct" resultType="Product">
+       select * from product
+   </select>
+    <select id="getCount" resultType="Integer">
+        select quantity from product where id=#{proudctid}
+    </select>
+    <insert id="insertProduct">
+        insert into takeout
+    </insert>
+</mapper>

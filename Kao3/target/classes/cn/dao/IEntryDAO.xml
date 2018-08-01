@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:接口绝对路径-->
+<mapper namespace="cn.dao.IEntryDAO">
+<select id="getEntrys" resultType="Entry" >
+    SELECT * from edoc_entry
+    <where>
+        <if test="id!=0">
+            AND categoryId=#{id}
+        </if>
+    </where>
+</select>
+    <select id="getone" resultType="Entry">
+        SELECT * from edoc_entry where id=#{id}
+    </select>
+    <select id="getCates" resultType="Category">
+        SELECT * from edoc_category
+    </select>
+    <delete id="removeEntry">
+        delete from edoc_entry where id=#{id}
+    </delete>
+    <update id="updateEntry">
+     UPDATE  edoc_entry SET categoryId=#{categoryId},title=#{title},summary=#{summary},uploaduser=#{uploaduser},createdate=#{createdate} where id=#{id}
+    </update>
+    <insert id="insertEntry">
+      INSERT INTO edoc_entry VALUES(DEFAULT,#{categoryId},#{title},#{summary},#{uploaduser},#{createdate})
+    </insert>
+</mapper>
